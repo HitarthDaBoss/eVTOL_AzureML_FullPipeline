@@ -1,0 +1,67 @@
+# ======================================================
+# eVTOL RL Training Configuration (AirSim Integrated)
+# ======================================================
+
+env:
+  name: "EVTOLEnv"
+  use_airsim: true                # Set false to run with random simulated data
+  airsim_ip: "127.0.0.1"
+  airsim_port: 41451
+  max_episode_steps: 2000
+  obs_dim: 10
+  act_dim: 4
+  energy_scale: 1.0
+  crash_penalty: -100.0
+  stable_flight_reward: 1.0
+  goal_reward: 500.0
+  weather_effects: true
+
+training:
+  rl:
+    # Rollout & batch settings for CPU
+    update_steps: 512           # smaller rollout to reduce CPU load
+    batch_size: 32              # smaller minibatch
+    ppo_epochs: 4               # fewer epochs per update
+    lr: 3e-4                    # learning rate, keep reasonable for CPU
+    gamma: 0.99
+    gae_lambda: 0.95
+    clip_eps: 0.2
+    vf_coef: 0.5
+    ent_coef: 0.01
+    max_grad_norm: 0.5
+
+    # Energy-aware path planner
+    energy_coef: 0.1             # keep small to avoid extra CPU calculation
+    energy_scale: 1.0
+
+    # Logging
+    log_wandb: False             # disable wandb on CPU if internet is slow
+    save_interval: 10            # save checkpoints more frequently
+
+
+model:
+  hidden_dim: 256
+  activation: "relu"
+  init_type: "orthogonal"
+
+logging:
+  log_dir: "runs/airsim_training"
+  wandb_project: "eVTOL-RL"
+  checkpoint_dir: "checkpoints/"
+
+distributed:
+  use_ddp: true
+  world_size: 2                   # Number of GPUs / machines
+  backend: "nccl"
+  master_addr: "localhost"
+  master_port: 12355
+
+hardware:
+  gpu: true
+  mixed_precision: true           # Enable AMP for faster training
+  num_workers: 4
+  pin_memory: true
+
+misc:
+  seed: 42
+  deterministic: false

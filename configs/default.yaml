@@ -1,0 +1,32 @@
+env:
+  dt: 0.1
+  use_airsim: false
+
+sensors:
+  gps_noise_std: 1.5
+  imu_noise_std: 0.02
+  altimeter_noise_std: 0.2
+  wind_max: 5.0
+
+model:
+  hidden_dim: 256
+
+training:
+  rl:
+    lr: 3e-4
+    gamma: 0.99
+    gae_lambda: 0.95
+    clip_eps: 0.2
+    ent_coef: 0.0
+    vf_coef: 0.5
+    max_grad_norm: 0.5
+    update_steps: 2048
+    batch_size: 64
+    ppo_epochs: 10
+    epochs: 1000
+    save_interval: 50
+    log_wandb: false
+    wandb_project: "evtol-rl"
+    use_amp: false
+    energy_coef: 0.0
+    energy_scale: 1.0

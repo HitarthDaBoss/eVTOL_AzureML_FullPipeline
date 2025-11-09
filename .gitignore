@@ -1,38 +1,14 @@
-# ----------------------
-# Python defaults
-# ----------------------
 __pycache__/
-*.py[cod]
-*$py.class
-
-# Virtual environments
-.env/
+*.pyc
+.venv/
 venv/
-*.env
-*.venv
-
-# Jupyter notebook checkpoints
+env/
+.env
 .ipynb_checkpoints/
-
-# Logs
+runs/
+*.pth
+*.pt
 *.log
-
-# IDEs
-.vscode/
-.idea/
-
-# OS files
+*.out
 .DS_Store
-Thumbs.db
-
-# ----------------------
-# Azure ML / AI specific
-# ----------------------
-# Model weights and checkpoints
-model_weights/
-*.h5
-*.ckpt
-*.npz
-
-# Data folders
-data/
+.vscode/

@@ -1,0 +1,13 @@
+numpy
+scipy
+pyyaml
+tqdm
+gymnasium
+torch>=2.0
+torchvision
+tensorboard
+wandb
+scikit-learn
+opencv-python
+airsim
+matplotlib

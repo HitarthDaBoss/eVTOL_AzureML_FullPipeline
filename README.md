@@ -1,15 +1,18 @@
-# eVTOL Azure ML Full Pipeline
+# eVTOL Autonomous Simulation & RL Project
 
-This repository contains a complete cloud-ready pipeline for autonomous eVTOL testing in Azure ML:
+## Overview
+This project simulates an **autonomous electric VTOL aircraft** using **AirSim** or simulated sensors.  
+Features:
 
-- Simulated sensors (GPS, Lidar, Weather)
-- AI model training and evaluation
-- Flight control autopilot
-- Live plotting and logging
-- Fully automated Azure ML pipeline
+- **Energy-aware path planning** using A*/heuristic-based planner  
+- **Sensors:** GPS, IMU, Altimeter, Wind simulation  
+- **Reinforcement Learning:** PPO algorithm for autonomous control  
+- **PID Expert Controller** for benchmarking  
+- **Full evaluation & visualization**  
 
-## Setup
+Designed to run on **Azure ML GPU compute**, **Paperspace**, or local GPU machines.
 
-1. Create a GPU compute cluster in Azure ML named `eVTOL-Compute`.
-2. Clone this repository in Azure ML or locally.
-3. Install dependencies:
+---
+
+## Project Structure
+

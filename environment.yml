@@ -1,0 +1,33 @@
+name: evtol-rl-cpu
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      # CPU-only PyTorch (no CUDA)
+      - torch==2.2.0+cpu
+      - torchvision==0.17.1+cpu
+      - torchaudio==2.2.0+cpu
+
+      # RL environments and utilities
+      - numpy
+      - scipy
+      - gym==0.26.2
+      - pyyaml
+      - tqdm
+
+      # AirSim Python API
+      - airsim
+
+      # Logging and visualization
+      - tensorboard
+      - wandb
+
+      # Optional: for distributed CPU training / future-proofing
+      - ray[rllib]==2.5.0
+
+      # CLI and config utilities
+      - argparse
+      - omegaconf
